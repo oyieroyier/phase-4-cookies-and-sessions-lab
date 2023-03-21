@@ -12,14 +12,12 @@ class ArticlesController < ApplicationController
 
     article = Article.find(params[:id])
     if session[:page_views] <= 3
-      (render json: article)
+      render json: article
     else
-      (
-        render json: {
-                 error: 'Maximum pageview limit reached',
-               },
-               status: :unauthorized
-      )
+      render json: {
+               error: 'Maximum pageview limit reached',
+             },
+             status: :unauthorized
     end
   end
 
